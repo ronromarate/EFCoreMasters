@@ -14,8 +14,6 @@ optionsBuilder.UseSqlServer(connection);
 
 var options = optionsBuilder.Options;
 
-//var dbContext = new AppDbContext(options);
-
 Filtering(new AppDbContext(options));
 SingleOrDefault(new AppDbContext(options));
 LoadingRelatedData_Manual(new AppDbContext(options));
