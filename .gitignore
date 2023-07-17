@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Session1/EFCoreAssignment/obj/project.nuget.cache
+/Session1/EFCoreAssignment/obj/EFCoreAssignment.csproj.nuget.dgspec.json
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.pdb
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.genruntimeconfig.cache
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.GeneratedMSBuildEditorConfig.editorconfig
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.dll
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.csproj.FileListAbsolute.txt
+/Session1/EFCoreAssignment/obj/Debug/net6.0/EFCoreAssignment.assets.cache
+/Session1/EFCoreAssignment/bin/Debug/net6.0/EFCoreAssignment.dll
+/Session1/EFCoreAssignment/bin/Debug/net6.0/EFCoreAssignment.pdb
+/Session1/.vs/EFCoreAssignment/v17/.suo
+*.vsidx
+/Session1/.vs/EFCoreAssignment/DesignTimeBuild/.dtbcache.v2
+/Session1/EFCoreAssignment/obj/Debug/net6.0/ref/EFCoreAssignment.dll
+/Session1/EFCoreAssignment/obj/Debug/net6.0/refint/EFCoreAssignment.dll
