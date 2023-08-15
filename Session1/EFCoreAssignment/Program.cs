@@ -120,7 +120,6 @@ static void InsertProductWithNewShop(AppDbContext dbContext)
         Shop = shop
     };
 
-    dbContext.Add(shop);
     dbContext.Add(product);
     dbContext.SaveChanges();
 }
