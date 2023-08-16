@@ -40,7 +40,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("ClientKey");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.LineItem", b =>
@@ -69,7 +69,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("LineItem");
+                    b.ToTable("LineItem", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Order", b =>
@@ -91,7 +91,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("OrderKey");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.PriceOffer", b =>
@@ -114,7 +114,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("PriceOfferId");
 
-                    b.ToTable("PriceOffers");
+                    b.ToTable("PriceOffers", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Product", b =>
@@ -135,7 +135,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Review", b =>
@@ -164,7 +164,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Supplier", b =>
@@ -189,7 +189,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("SupplierFluentKey");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Tag", b =>
@@ -199,7 +199,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("TagFluentKey");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("ProductSupplier", b =>
@@ -214,7 +214,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasIndex("SuppliersLinkSupplierFluentKey");
 
-                    b.ToTable("ProductSupplier");
+                    b.ToTable("ProductSupplier", (string)null);
                 });
 
             modelBuilder.Entity("ProductTag", b =>
@@ -229,7 +229,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasIndex("TagsTagFluentKey");
 
-                    b.ToTable("ProductTag");
+                    b.ToTable("ProductTag", (string)null);
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.LineItem", b =>
