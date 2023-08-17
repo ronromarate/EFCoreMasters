@@ -50,3 +50,10 @@
 /.vs/VSWorkspaceState.json
 /.vs/slnx.sqlite
 /.vs/EFCoreMasters/v17/.wsuo
+/Session4/InventoryAppEFCore.API/bin/Debug/net6.0
+/Session4/InventoryAppEFCore.API/obj/Debug/net6.0/staticwebassets
+/Session4/InventoryAppEFCore.API/obj/Debug/net6.0
+/Session4/InventoryAppEFCore.API/obj
+/Session4/InventoryAppEFCore.DataLayer/bin/Debug/net6.0
+/Session4/InventoryAppEFCore.DataLayer/obj/Debug/net6.0
+/Session4/InventoryAppEFCore.DataLayer/obj
