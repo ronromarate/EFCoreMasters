@@ -1,8 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EFCoreAssignment;
+using EFCoreAssignment.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
-using System.Threading.Channels;
 
 Console.WriteLine("Hello, World!");
 
@@ -82,3 +81,81 @@ static void LoadingRelatedData_EagerLoading(AppDbContext dbContext)
 }
 
 Console.WriteLine("EF Core is the best");
+
+// TODO: Assignment 2
+
+InsertProduct(new AppDbContext(options));
+InsertProductWithNewShop(new AppDbContext(options));
+UpdateProduct(new AppDbContext(options));
+DeleteProduct(new AppDbContext(options));
+DeleteProductByKey(new AppDbContext(options));
+
+static void InsertProduct(AppDbContext dbContext)
+{
+    // TODO: Insert a new Product
+    using (dbContext)
+    {
+        var product = new Product()
+        {
+            Name = "Product 6",
+            ShopId = 1
+        };
+
+        dbContext.Add(product);
+        dbContext.SaveChanges();
+    }
+}
+
+static void InsertProductWithNewShop(AppDbContext dbContext)
+{
+    // TODO: Insert a new Product with a new Shop
+    var shop = new Shop()
+    {
+        Name = "Shop 4"
+    };
+
+    var product = new Product()
+    {
+        Name = "Product 7",
+        Shop = shop
+    };
+
+    dbContext.Add(product);
+    dbContext.SaveChanges();
+}
+
+static void UpdateProduct(AppDbContext dbContext)
+{
+    // TODO: Update a Product
+    var product = dbContext.Products.FirstOrDefault(p => p.Name == "Product 6");
+
+    if (product != null) 
+    {
+        product.Name = "Product 6 modified";
+        product.ShopId = 2;
+        dbContext.SaveChanges();
+    }
+}
+
+static void DeleteProduct(AppDbContext dbContext)
+{
+    // TODO: Delete a Product
+    var productId = 12;
+    var product = dbContext.Products.FirstOrDefault(p => p.Id == productId);
+
+    if (product != null)
+    {
+        dbContext.Remove(product);
+        dbContext.SaveChanges();
+    }
+}
+
+static void DeleteProductByKey(AppDbContext dbContext)
+{
+    // TODO: Delete a Product with just having a key
+    var productId = 13;
+    var product = new Product { Id = productId };
+
+    dbContext.Remove(product);
+    dbContext.SaveChanges();
+}
