@@ -68,6 +68,10 @@ namespace InventoryAppEFCore.DataLayer
             modelBuilder.Entity<Order>()
                 .Property(x => x.DateOrderedUtc)
                 .HasConversion(utcConverter);
+
+            //Soft Delete
+            modelBuilder.Entity<Product>()
+                .HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }
