@@ -72,6 +72,17 @@ namespace InventoryAppEFCore.DataLayer
             //Soft Delete
             modelBuilder.Entity<Product>()
                 .HasQueryFilter(p => !p.IsDeleted);
+
+            //Seed Client
+            modelBuilder.Entity<Client>().HasData(
+                new { ClientKey = 1, Name = "Client 1", IsDeleted = false },
+                new { ClientKey = 2, Name = "Client 2", IsDeleted = false },
+                new { ClientKey = 3, Name = "Client 3", IsDeleted = true });
+
+            //Add Product View
+            modelBuilder.Entity<PriceOffer>().ToTable("PriceOffer");
+            modelBuilder.Entity<PriceOffer>().ToView("PriceOfferView").HasNoKey();
+            
         }
     }
 }
