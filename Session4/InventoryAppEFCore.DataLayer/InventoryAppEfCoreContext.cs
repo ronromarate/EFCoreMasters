@@ -1,7 +1,6 @@
 ﻿using InventoryAppEFCore.DataLayer.EfClasses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Security.Cryptography.X509Certificates;
 
 namespace InventoryAppEFCore.DataLayer
 {
@@ -20,6 +19,18 @@ namespace InventoryAppEFCore.DataLayer
         public DbSet<Client> Clients { get; set; }
         public DbSet<PriceOffer> PriceOffers { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        //UDF - Scalar
+        [DbFunction]
+        public int? ProductsCountByStatus(bool isDeleted) => null;
+
+        //UDF - Table-Valued
+        [DbFunction]
+        public IQueryable<PriceOffer> GetPriceOfferFiltered(int amount)
+        {
+            return FromExpression(() =>
+            GetPriceOfferFiltered(amount));
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,7 +63,7 @@ namespace InventoryAppEFCore.DataLayer
 
             //Shadow property
             modelBuilder.Entity<Supplier>()
-                .Property<DateTime>("LastModified");
+                .Property<DateTime?>("LastModified");
 
             //Backing field
             modelBuilder.Entity<LineItem>()
@@ -80,9 +91,26 @@ namespace InventoryAppEFCore.DataLayer
                 new { ClientKey = 3, Name = "Client 3", IsDeleted = true });
 
             //Add Product View
-            modelBuilder.Entity<PriceOffer>().ToTable("PriceOffer");
-            modelBuilder.Entity<PriceOffer>().ToView("PriceOfferView").HasNoKey();
-            
+            modelBuilder.Entity<PriceOffer>().ToTable("PriceOffers");
+            modelBuilder.Entity<PriceOffer>().ToView("PriceOfferView");
+
+            //Computed Columns
+            modelBuilder.Entity<Supplier>()
+                .Property(p => p.FullDescription)
+                .HasComputedColumnSql("[Name] + ' (' + [Description] + ')'", stored: true);
+
+            modelBuilder.Entity<Supplier>()
+                .Property(p => p.ContactPersonFullName)
+                .HasComputedColumnSql("[ContactPersonLastName] + ', ' + [ContactPersonFirstName]");
+
+            //HasDefaultValue
+            modelBuilder.Entity<Supplier>()
+                .Property("LastModified")
+                .HasDefaultValue(null);
+
+            modelBuilder.Entity<Supplier>()
+                .Property(p => p.CreatedOn)
+                .HasDefaultValueSql("getutcdate()");
         }
     }
 }

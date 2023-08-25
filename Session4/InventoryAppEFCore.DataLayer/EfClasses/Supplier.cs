@@ -14,6 +14,13 @@ namespace InventoryAppEFCore.DataLayer.EfClasses
         public string Name { get; set; }
 
         public string Description { get; set; }
+        public string FullDescription { get; private  set; }
+
+        public string ContactPersonFirstName { get; set; }
+        public string ContactPersonLastName { get; set; }
+        public string ContactPersonFullName { get; private set; }
+        public DateTime CreatedOn { get; private set; }
+
         [NotMapped]
         public ExcludeClass ExcludedClass { get; set; }
 

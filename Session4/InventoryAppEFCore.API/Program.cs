@@ -32,6 +32,15 @@ if (app.Environment.IsDevelopment())
         var context = services.GetRequiredService<DBInitializer>();
 
         await context.SeedAsync();
+
+        //Computed Columns
+        context.ComputedColumnSql();
+
+        //UDF - Scalar
+        context.CreateScalarUdfForProductsCountByStatus();
+
+        //UDF - Table-Valued
+        context.CreateTableValuedUdf();
     }
 }
 
