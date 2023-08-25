@@ -4,6 +4,7 @@ using InventoryAppEFCore.DataLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryAppEFCore.DataLayer.Migrations
 {
     [DbContext(typeof(InventoryAppEfCoreContext))]
-    partial class InventoryAppEfCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230822133050_AddPriceOfferView")]
+    partial class AddPriceOfferView
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,9 +136,7 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     b.HasKey("PriceOfferId");
 
-                    b.ToTable("PriceOffers", (string)null);
-
-                    b.ToView("PriceOfferView");
+                    b.ToTable("PriceOffers");
                 });
 
             modelBuilder.Entity("InventoryAppEFCore.DataLayer.EfClasses.Product", b =>
@@ -197,36 +197,11 @@ namespace InventoryAppEFCore.DataLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierFluentKey"), 1L, 1);
 
-                    b.Property<string>("ContactPersonFirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactPersonFullName")
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("[ContactPersonLastName] + ', ' + [ContactPersonFirstName]");
-
-                    b.Property<string>("ContactPersonLastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getutcdate()");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullDescription")
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("[Name] + ' (' + [Description] + ')'", true);
-
-                    b.Property<DateTime?>("LastModified")
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
